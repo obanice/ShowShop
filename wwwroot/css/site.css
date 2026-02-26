@@ -1,0 +1,404 @@
+/* ============================================================
+   SHOPQUEUE — site.css
+   Global styles: variables, reset, typography, nav, buttons,
+   forms, utilities. Shared across ALL pages and layouts.
+   ============================================================ */
+
+/* ── GOOGLE FONTS (loaded once here, referenced everywhere) ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap');
+
+/* ── DESIGN TOKENS ── */
+:root {
+  --green:        #2e7d32;
+  --green-mid:    #43a047;
+  --green-light:  #e8f5e9;
+  --green-accent: #66bb6a;
+  --dark:         #1a2e1a;
+  --text:         #333333;
+  --muted:        #6b7280;
+  --white:        #ffffff;
+  --border:       #d1e7d1;
+  --bg:           #f3f8f3;
+
+  --radius-sm:  8px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+
+  --shadow-sm:  0 1px 6px rgba(0,0,0,.06);
+  --shadow-md:  0 4px 20px rgba(0,0,0,.08);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,.10);
+
+  --font-sans:  'DM Sans', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* ── RESET ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4, h5 {
+  color: var(--dark);
+  line-height: 1.25;
+}
+
+a { color: inherit; }
+
+/* ── LOGO ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--green);
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  white-space: nowrap;
+}
+
+.btn:active { transform: translateY(0) !important; }
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--green-mid);
+  box-shadow: 0 4px 14px rgba(46,125,50,.3);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--dark);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--green);
+  background: var(--green-light);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,.12);
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,.25);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.22); }
+
+.btn-white {
+  background: var(--white);
+  color: var(--green);
+}
+.btn-white:hover { opacity: .9; transform: translateY(-1px); }
+
+.btn-whatsapp {
+  width: 100%;
+  background: var(--white);
+  color: #25d366;
+  border: 1.5px solid #25d366;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-whatsapp:hover { background: #f0fff4; }
+
+.btn-sm {
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── FORMS ── */
+.form-group { margin-bottom: 18px; }
+.form-group:last-child { margin-bottom: 0; }
+
+.form-row {
+  display: flex;
+  gap: 14px;
+}
+.form-row .form-group { flex: 1; }
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 7px;
+  letter-spacing: 0.02em;
+}
+
+.label-required::after {
+  content: ' *';
+  color: #e53935;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fafff9;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--green-accent);
+  box-shadow: 0 0 0 3px rgba(102,187,106,.15);
+  background: var(--white);
+}
+
+input::placeholder,
+textarea::placeholder { color: #bbb; }
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: #ccc;
+  font-size: 12px;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── STATUS PILLS ── */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.pill-new    { background: #e3f2fd; color: #1565c0; }
+.pill-ready  { background: var(--green-light); color: var(--green); }
+.pill-done   { background: #f5f5f5; color: #666; }
+
+/* ── CARD ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.card:last-child { margin-bottom: 0; }
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title .card-icon { font-size: 18px; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.breadcrumb a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: #ccc; }
+
+/* ── BADGE CHIPS ── */
+.meta-chip {
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ── FADE-UP ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp .6s ease both; }
+
+/* ── FIELD HINT ── */
+.field-hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* ── PRICE INPUT ── */
+.price-input-wrap { position: relative; }
+.price-symbol {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  pointer-events: none;
+}
+.price-input-wrap input { padding-left: 32px; }
+
+/* ── PHONE INPUT ── */
+.phone-wrapper { display: flex; }
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 12px;
+  border: 1.5px solid var(--border);
+  border-right: none;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  background: #f3f8f3;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.phone-wrapper input {
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-left: 1px solid var(--border);
+}
+
+/* ── UPGRADE LOCK NOTICE ── */
+.upgrade-notice {
+  padding: 12px 16px;
+  background: #f9f9f9;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border);
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+.upgrade-notice a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ── SAVE REMINDER ── */
+.save-reminder {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #795548;
+  margin-bottom: 20px;
+}

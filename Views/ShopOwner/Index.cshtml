@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopQueue — Dashboard</title>
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/shopowner-layout.css" />
+</head>
+<body class="shopowner-layout">
+
+    <!-- ── TOP APP NAV ── -->
+    <nav class="app-nav">
+        <a class="logo" href="dashboard.html">
+            <div class="logo-icon">SQ</div>
+            <span class="logo-text">ShopQueue</span>
+        </a>
+        <div class="app-nav-right">
+            <button class="nav-notif">🔔<span class="notif-dot"></span></button>
+            <div class="nav-user">
+                <strong>Emeka Okafor</strong>
+                <span>Shop Owner · Free Plan</span>
+            </div>
+            <div class="nav-avatar">EO</div>
+        </div>
+    </nav>
+
+    <!-- ── APP SHELL ── -->
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar">
+            <span class="sidebar-section-label">Main</span>
+            <a class="sidebar-item active" href="dashboard.html" data-page="dashboard">
+                <span class="sidebar-icon">🏠</span> Dashboard
+            </a>
+            <a class="sidebar-item" href="add-product.html" data-page="products">
+                <span class="sidebar-icon">📦</span> Products
+            </a>
+            <a class="sidebar-item" href="#" data-page="orders">
+                <span class="sidebar-icon">📋</span> Orders
+                <span class="sidebar-badge">3</span>
+            </a>
+            <a class="sidebar-item" href="#" data-page="share-shop">
+                <span class="sidebar-icon">🔗</span> Share My Shop
+            </a>
+
+            <span class="sidebar-section-label">Manage</span>
+            <a class="sidebar-item" href="#" data-page="analytics">
+                <span class="sidebar-icon">📊</span> Analytics
+            </a>
+            <a class="sidebar-item" href="#" data-page="notifications">
+                <span class="sidebar-icon">🔔</span> Notifications
+                <span class="sidebar-badge">5</span>
+            </a>
+            <a class="sidebar-item" href="#" data-page="shop-settings">
+                <span class="sidebar-icon">⚙️</span> Shop Settings
+            </a>
+            <a class="sidebar-item" href="#" data-page="profile">
+                <span class="sidebar-icon">👤</span> Profile
+            </a>
+
+            <div class="sidebar-footer">
+                <div class="plan-chip">⚡ Free Plan</div>
+                <button class="sidebar-upgrade-btn">Upgrade Plan →</button>
+            </div>
+        </aside>
+
+        <!-- ── PAGE BODY ── -->
+        <main class="app-main">
+
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h1>Good morning, Emeka 👋</h1>
+                    <p>Here's what's happening with your shop today.</p>
+                </div>
+                <div class="page-header-actions">
+                    <a class="btn btn-primary" href="add-product.html">+ Add Product</a>
+                </div>
+            </div>
+
+            <!-- Onboarding Banner -->
+            <div class="onboarding-banner">
+                <div class="onboarding-text">
+                    <h3>Your shop is live — now fill it up!</h3>
+                    <p>You've registered successfully. The next step is to add your first product so customers can start pre-ordering. It only takes a minute.</p>
+                </div>
+                <div class="onboarding-actions">
+                    <a class="btn btn-white" href="add-product.html">+ Add First Product</a>
+                    <button class="btn btn-ghost">Share Shop Link</button>
+                </div>
+            </div>
+
+            <!-- Setup Steps -->
+            <div class="steps-row">
+                <div class="step done">
+                    <div class="step-num">✓</div>
+                    <div class="step-text">
+                        <strong>Account Created</strong>
+                        <span>Phone verified via WhatsApp</span>
+                    </div>
+                </div>
+                <div class="step active">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <strong>Add Products</strong>
+                        <span>Upload your first catalog item</span>
+                    </div>
+                </div>
+                <div class="step todo">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <strong>Share Shop Link</strong>
+                        <span>Send to customers via WhatsApp</span>
+                    </div>
+                </div>
+                <div class="step todo">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                        <strong>Receive Orders</strong>
+                        <span>Manage pre-orders from dashboard</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon orange">⏳</div>
+                    <div class="stat-info">
+                        <strong>3</strong>
+                        <span>Pending Orders</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">✅</div>
+                    <div class="stat-info">
+                        <strong>1</strong>
+                        <span>Ready for Pickup</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">📦</div>
+                    <div class="stat-info">
+                        <strong>0</strong>
+                        <span>Total Products</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Shops -->
+            <div class="section-header">
+                <h2>My Shops</h2>
+                <a href="#">+ Create New Shop</a>
+            </div>
+
+            <div class="shops-grid">
+                <div class="shop-card">
+                    <div class="shop-card-top">
+                        <div class="shop-avatar">EO</div>
+                        <div class="shop-meta">
+                            <strong>Emeka Plumbing Supplies</strong>
+                            <span>Plumbing Materials · Lagos</span>
+                        </div>
+                    </div>
+                    <div class="shop-stats">
+                        <div class="shop-stat"><strong>0</strong><span>Products</span></div>
+                        <div class="shop-stat"><strong>3</strong><span>Orders</span></div>
+                        <div class="shop-stat"><strong>0</strong><span>Resellers</span></div>
+                    </div>
+                    <div class="shop-card-actions">
+                        <button class="btn btn-primary btn-sm"
+                                onclick="window.location='add-product.html'">
+                            + Add Product
+                        </button>
+                        <button class="btn btn-outline btn-sm">Share Link 🔗</button>
+                    </div>
+                </div>
+
+                <div class="shop-card new-shop">
+                    <div class="new-shop-icon">+</div>
+                    <strong>Create New Shop</strong>
+                    <span>Add a second catalog with different pricing</span>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="section-header">
+                <h2>Recent Orders</h2>
+                <a href="#">View all orders</a>
+            </div>
+
+            <div class="orders-table-wrap">
+                <div class="orders-table-header">
+                    <h2>Orders Inbox</h2>
+                    <a class="btn btn-primary btn-sm" href="#">View All</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Items</th>
+                            <th>Amount</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="order-id">#SQ-0031</span></td>
+                            <td>Adaeze Nwosu</td>
+                            <td><span class="order-items">4-inch PVC pipe × 2, Elbow joint × 4</span></td>
+                            <td>₦14,500</td>
+                            <td>9:42 AM</td>
+                            <td><span class="status-pill pill-new">● New</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="order-id">#SQ-0030</span></td>
+                            <td>Chika (Reseller)</td>
+                            <td><span class="order-items">Gate valve 2" × 1, PVC Tee × 3</span></td>
+                            <td>₦22,000</td>
+                            <td>Yesterday</td>
+                            <td><span class="status-pill pill-ready">✓ Ready</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="order-id">#SQ-0029</span></td>
+                            <td>Bello Ibrahim</td>
+                            <td><span class="order-items">Pressure gauge × 1</span></td>
+                            <td>₦6,800</td>
+                            <td>Yesterday</td>
+                            <td><span class="status-pill pill-done">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

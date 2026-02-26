@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopQueue — Add Product</title>
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/shopowner-layout.css" />
+</head>
+<body class="shopowner-layout">
+
+    <!-- ── TOP APP NAV ── -->
+    <nav class="app-nav">
+        <a class="logo" href="dashboard.html">
+            <div class="logo-icon">SQ</div>
+            <span class="logo-text">ShopQueue</span>
+        </a>
+        <div class="app-nav-right">
+            <button class="nav-notif">🔔<span class="notif-dot"></span></button>
+            <div class="nav-user">
+                <strong>Emeka Okafor</strong>
+                <span>Shop Owner · Free Plan</span>
+            </div>
+            <div class="nav-avatar">EO</div>
+        </div>
+    </nav>
+
+    <!-- ── APP SHELL ── -->
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar">
+            <span class="sidebar-section-label">Main</span>
+            <a class="sidebar-item" href="dashboard.html" data-page="dashboard">
+                <span class="sidebar-icon">🏠</span> Dashboard
+            </a>
+            <a class="sidebar-item active" href="#" data-page="products">
+                <span class="sidebar-icon">📦</span> Products
+            </a>
+            <a class="sidebar-item" href="#" data-page="orders">
+                <span class="sidebar-icon">📋</span> Orders
+                <span class="sidebar-badge">3</span>
+            </a>
+            <a class="sidebar-item" href="#" data-page="share-shop">
+                <span class="sidebar-icon">🔗</span> Share My Shop
+            </a>
+
+            <span class="sidebar-section-label">Manage</span>
+            <a class="sidebar-item" href="#" data-page="analytics">
+                <span class="sidebar-icon">📊</span> Analytics
+            </a>
+            <a class="sidebar-item" href="#" data-page="notifications">
+                <span class="sidebar-icon">🔔</span> Notifications
+                <span class="sidebar-badge">5</span>
+            </a>
+            <a class="sidebar-item" href="#" data-page="shop-settings">
+                <span class="sidebar-icon">⚙️</span> Shop Settings
+            </a>
+            <a class="sidebar-item" href="#" data-page="profile">
+                <span class="sidebar-icon">👤</span> Profile
+            </a>
+
+            <div class="sidebar-footer">
+                <div class="plan-chip">⚡ Free Plan</div>
+                <button class="sidebar-upgrade-btn">Upgrade Plan →</button>
+            </div>
+        </aside>
+
+        <!-- ── PAGE BODY ── -->
+        <main class="app-main">
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="dashboard.html">Dashboard</a>
+                <span class="sep">›</span>
+                <a href="#">Products</a>
+                <span class="sep">›</span>
+                Add New Product
+            </div>
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h1>Add New Product</h1>
+                    <p>Fill in the details below to add a product to your catalog.</p>
+                </div>
+                <div class="page-header-actions">
+                    <button class="btn btn-outline" onclick="window.location='dashboard.html'">← Cancel</button>
+                    <button class="btn btn-primary" onclick="saveProduct()">Save Product ✓</button>
+                </div>
+            </div>
+
+            <div class="save-reminder">
+                💡 <span>Fields marked <strong>*</strong> are required. Your product will be live in your catalog immediately after saving.</span>
+            </div>
+
+            <!-- Two-column form -->
+            <div class="form-layout">
+
+                <!-- LEFT: form fields -->
+                <div>
+
+                    <div class="card">
+                        <div class="card-title"><span class="card-icon">📝</span> Product Information</div>
+
+                        <div class="form-group">
+                            <label class="label-required">Product Name</label>
+                            <input type="text" id="product-name" placeholder="e.g. PVC Pressure Pipe" oninput="updatePreview()" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="label-required">Brand Name</label>
+                            <input type="text" id="brand-name" placeholder="e.g. Basco, Rexus, Generic" oninput="updatePreview()" />
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="label-required">Category</label>
+                                <select id="category" onchange="updateSubcategory(); updatePreview()">
+                                    <option value="" disabled selected>Select category</option>
+                                    <option value="pipes">Pipes</option>
+                                    <option value="fittings">Fittings</option>
+                                    <option value="valves">Valves</option>
+                                    <option value="tools">Tools</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sub-category</label>
+                                <select id="subcategory">
+                                    <option value="" disabled selected>Select sub-category</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+                            <textarea id="description" placeholder="Brief description — material, usage, any special notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Sizes & Variants -->
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">📐</span> Sizes &amp; Variants
+                            <span style="font-size:12px;font-weight:400;color:var(--muted);margin-left:6px">* At least one required</span>
+                        </div>
+
+                        <p class="field-hint" style="margin-bottom:14px;">Add all available sizes or variants. Customers will choose one when ordering.</p>
+
+                        <div class="variant-tags" id="variant-list">
+                            <div class="variant-tag">½ inch <span class="remove" onclick="removeVariant(this)">×</span></div>
+                            <div class="variant-tag">¾ inch <span class="remove" onclick="removeVariant(this)">×</span></div>
+                            <div class="variant-tag">1 inch  <span class="remove" onclick="removeVariant(this)">×</span></div>
+                            <div class="variant-tag">2 inch  <span class="remove" onclick="removeVariant(this)">×</span></div>
+                        </div>
+
+                        <div style="display:flex;gap:8px;margin-top:14px;align-items:center;">
+                            <input type="text" id="new-variant" placeholder="e.g. 4 inch, Large, 2 litre…"
+                                   style="flex:1;" onkeydown="if(event.key==='Enter'){addVariant();}" />
+                            <button class="add-variant-btn" onclick="addVariant()">+ Add</button>
+                        </div>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="card">
+                        <div class="card-title"><span class="card-icon">💰</span> Pricing</div>
+
+                        <p class="field-hint" style="margin-bottom:18px;">Set the price for this product. On paid plans you can set different prices per shop.</p>
+
+                        <div class="shop-price-row">
+                            <div class="shop-price-label">
+                                Emeka Plumbing Supplies
+                                <span>Your main shop</span>
+                            </div>
+                            <div class="shop-price-input">
+                                <div class="price-input-wrap">
+                                    <span class="price-symbol">₦</span>
+                                    <input type="number" id="price-main" placeholder="0.00" oninput="updatePreview()" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="upgrade-notice">
+                            🔒 Multiple shops with different pricing is available on
+                            <strong style="color:var(--dark)">Standard plan and above</strong>.
+                            <a href="#">Upgrade</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: image upload + live preview -->
+                <div>
+
+                    <div class="card">
+                        <div class="card-title"><span class="card-icon">🖼️</span> Product Images</div>
+
+                        <div class="image-upload-main" onclick="document.getElementById('img-input').click()">
+                            <div class="upload-icon">📷</div>
+                            <h4>Upload Main Image</h4>
+                            <p>Drag &amp; drop or <span class="browse">browse files</span></p>
+                            <p style="margin-top:6px;font-size:11px;">JPG, PNG · Max 5MB · Required</p>
+                            <input type="file" id="img-input" accept="image/*" style="display:none"
+                                   onchange="previewMainImage(event)" />
+                        </div>
+
+                        <p class="field-hint" style="margin-bottom:10px;">Additional images (optional)</p>
+                        <div class="additional-images">
+                            <div class="add-more-img"><span>+</span> Add</div>
+                            <div class="add-more-img"><span>+</span> Add</div>
+                            <div class="add-more-img"><span>+</span> Add</div>
+                        </div>
+                    </div>
+
+                    <!-- Live preview -->
+                    <div class="card">
+                        <div class="card-title"><span class="card-icon">👁️</span> Customer Preview</div>
+                        <p class="field-hint" style="margin-bottom:14px;">This is how your product will appear to customers browsing your catalog.</p>
+
+                        <div class="preview-card">
+                            <div class="preview-img" id="preview-img-area">🖼️</div>
+                            <div class="preview-body">
+                                <div class="preview-name" id="prev-name">Product name</div>
+                                <div class="preview-brand" id="prev-brand">Brand · Category</div>
+                                <div class="preview-meta">
+                                    <span class="meta-chip" id="prev-cat">All sizes</span>
+                                </div>
+                                <div class="preview-price" id="prev-price">
+                                    ₦ —<span> / unit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save actions -->
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;"
+                                onclick="saveProduct()">
+                            Save Product ✓
+                        </button>
+                        <button class="btn btn-outline" style="width:100%;padding:13px;"
+                                onclick="window.location='dashboard.html'">
+                            Discard &amp; Go Back
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const subcategories = {
+          pipes:    ['PVC', 'HDPE', 'PPR', 'Galvanized', 'Copper'],
+          fittings: ['Elbows', 'Tees', 'Reducers', 'Couplings', 'End Caps'],
+          valves:   ['Gate Valve', 'Ball Valve', 'Check Valve', 'Pressure Relief'],
+          tools:    ['Pipe Cutters', 'Wrenches', 'Sealants', 'Tape'],
+          other:    ['Miscellaneous'],
+        };
+
+        function updateSubcategory() {
+          const cat = document.getElementById('category').value;
+          const sub = document.getElementById('subcategory');
+          sub.innerHTML = '<option value="" disabled selected>Select sub-category</option>';
+          (subcategories[cat] || []).forEach(s => {
+            const o = document.createElement('option');
+            o.textContent = s;
+            sub.appendChild(o);
+          });
+        }
+
+        function updatePreview() {
+          const name  = document.getElementById('product-name').value || 'Product name';
+          const brand = document.getElementById('brand-name').value   || 'Brand';
+          const cat   = document.getElementById('category');
+          const catLabel = cat.options[cat.selectedIndex]?.text || 'Category';
+          const price = document.getElementById('price-main').value;
+
+          document.getElementById('prev-name').textContent  = name;
+          document.getElementById('prev-brand').textContent = `${brand} · ${catLabel}`;
+          document.getElementById('prev-cat').textContent   = catLabel !== 'Category' ? catLabel : 'All sizes';
+          document.getElementById('prev-price').innerHTML   = price
+            ? `₦${Number(price).toLocaleString()}<span> / unit</span>`
+            : `₦ —<span> / unit</span>`;
+        }
+
+        function addVariant() {
+          const input = document.getElementById('new-variant');
+          const val = input.value.trim();
+          if (!val) return;
+          const list = document.getElementById('variant-list');
+          const tag  = document.createElement('div');
+          tag.className = 'variant-tag';
+          tag.innerHTML = `${val} <span class="remove" onclick="removeVariant(this)">×</span>`;
+          list.appendChild(tag);
+          input.value = '';
+        }
+
+        function removeVariant(el) { el.parentElement.remove(); }
+
+        function previewMainImage(e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = ev => {
+            const area = document.getElementById('preview-img-area');
+            area.innerHTML = '';
+            area.style.background = 'none';
+            const img = document.createElement('img');
+            img.src = ev.target.result;
+            area.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        }
+
+        function saveProduct() {
+          const name  = document.getElementById('product-name').value.trim();
+          const brand = document.getElementById('brand-name').value.trim();
+          const price = document.getElementById('price-main').value.trim();
+          if (!name || !brand || !price) {
+            alert('Please fill in Product Name, Brand Name, and Price before saving.');
+            return;
+          }
+          alert('✅ Product saved! Redirecting to your product list…');
+          window.location = 'dashboard.html';
+        }
+    </script>
+
+</body>
+</html>

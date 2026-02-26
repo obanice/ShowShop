@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopQueue</title>
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/shopowner-layout.css" />
+    <!-- Page-specific CSS injected by loader -->
+    <style id="page-style"></style>
+</head>
+<body class="shopowner-layout">
+
+    <!-- ── TOP APP NAV ── -->
+    <nav class="app-nav">
+        <a class="logo" href="../pages/dashboard.html">
+            <div class="logo-icon">SQ</div>
+            <span class="logo-text">ShopQueue</span>
+        </a>
+        <div class="app-nav-right">
+            <button class="nav-notif" title="Notifications">
+                🔔
+                <span class="notif-dot" id="notif-dot"></span>
+            </button>
+            <div class="nav-user">
+                <strong id="nav-user-name">Loading…</strong>
+                <span id="nav-user-role">Shop Owner</span>
+            </div>
+            <div class="nav-avatar" id="nav-avatar">—</div>
+        </div>
+    </nav>
+
+    <!-- ── APP SHELL ── -->
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar">
+            <span class="sidebar-section-label">Main</span>
+            <a class="sidebar-item" href="../pages/dashboard.html" data-page="dashboard">
+                <span class="sidebar-icon">🏠</span> Dashboard
+            </a>
+            <a class="sidebar-item" href="../pages/products.html" data-page="products">
+                <span class="sidebar-icon">📦</span> Products
+            </a>
+            <a class="sidebar-item" href="../pages/orders.html" data-page="orders">
+                <span class="sidebar-icon">📋</span> Orders
+                <span class="sidebar-badge" id="orders-badge" style="display:none">0</span>
+            </a>
+            <a class="sidebar-item" href="../pages/share-shop.html" data-page="share-shop">
+                <span class="sidebar-icon">🔗</span> Share My Shop
+            </a>
+
+            <span class="sidebar-section-label">Manage</span>
+            <a class="sidebar-item" href="../pages/analytics.html" data-page="analytics">
+                <span class="sidebar-icon">📊</span> Analytics
+            </a>
+            <a class="sidebar-item" href="../pages/notifications.html" data-page="notifications">
+                <span class="sidebar-icon">🔔</span> Notifications
+                <span class="sidebar-badge" id="notif-badge" style="display:none">0</span>
+            </a>
+            <a class="sidebar-item" href="../pages/shop-settings.html" data-page="shop-settings">
+                <span class="sidebar-icon">⚙️</span> Shop Settings
+            </a>
+            <a class="sidebar-item" href="../pages/profile.html" data-page="profile">
+                <span class="sidebar-icon">👤</span> Profile
+            </a>
+
+            <div class="sidebar-footer">
+                <div class="plan-chip" id="plan-chip">⚡ Free Plan</div>
+                <button class="sidebar-upgrade-btn"
+                        onclick="window.location='../pages/pricing.html'">
+                    Upgrade Plan →
+                </button>
+            </div>
+        </aside>
+
+        <!-- ── PAGE CONTENT INJECTED HERE ── -->
+        <main class="app-main" id="layout-slot">
+            <!-- Content loaded by page script -->
+        </main>
+
+    </div><!-- /.app-layout -->
+    <!-- ── LAYOUT SCRIPT ── -->
+    <script>
+        /**
+         * ShopOwnerLayout loader.
+         * Each page using this layout calls:
+         *   ShopOwnerLayout.render(htmlString, opts)
+         *
+         * opts = {
+         *   title:       string,           // page title suffix
+         *   activePage:  string,           // matches data-page attr on sidebar items
+         *   user:        { name, plan },   // populates nav user block
+         *   badges:      { orders, notif } // numeric badge counts (0 = hidden)
+         * }
+         */
+        window.ShopOwnerLayout = {
+          render(contentHTML, opts = {}) {
+            // Page title
+            if (opts.title) document.title = `ShopQueue — ${opts.title}`;
+
+            // Active sidebar item
+            if (opts.activePage) {
+              document.querySelectorAll('.sidebar-item').forEach(el => {
+                el.classList.toggle('active', el.dataset.page === opts.activePage);
+              });
+            }
+
+            // User info
+            if (opts.user) {
+              const initials = opts.user.name
+                .split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+              document.getElementById('nav-user-name').textContent = opts.user.name;
+              document.getElementById('nav-user-role').textContent =
+                `Shop Owner · ${opts.user.plan || 'Free Plan'}`;
+              document.getElementById('nav-avatar').textContent   = initials;
+              document.getElementById('plan-chip').textContent    =
+                `⚡ ${opts.user.plan || 'Free Plan'}`;
+            }
+
+            // Notification / order badges
+            if (opts.badges) {
+              const ob = document.getElementById('orders-badge');
+              const nb = document.getElementById('notif-badge');
+              const nd = document.getElementById('notif-dot');
+
+              if (opts.badges.orders > 0) {
+                ob.textContent = opts.badges.orders;
+                ob.style.display = '';
+              }
+              if (opts.badges.notif > 0) {
+                nb.textContent   = opts.badges.notif;
+                nb.style.display = '';
+                nd.style.display = '';
+              } else {
+                nd.style.display = 'none';
+              }
+            }
+
+            // Inject page HTML into the slot
+            document.getElementById('layout-slot').innerHTML = contentHTML;
+
+            // Re-run any inline scripts in the injected content
+            document.getElementById('layout-slot')
+              .querySelectorAll('script')
+              .forEach(s => {
+                const live = document.createElement('script');
+                live.textContent = s.textContent;
+                document.body.appendChild(live);
+              });
+          }
+        };
+    </script>
+</body>
+</html>

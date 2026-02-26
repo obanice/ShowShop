@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopQueue</title>
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="stylesheet" href="../css/account-layout.css" />
+    <!-- Page-specific CSS injected by loader -->
+    <style id="page-style"></style>
+</head>
+<body class="account-layout" style="display:flex; flex-direction:column;">
+
+    <!-- ── PUBLIC NAV ── -->
+    <nav class="account-nav">
+        <a class="logo" href="../index.html">
+            <div class="logo-icon">SQ</div>
+            <span class="logo-text">ShopQueue</span>
+        </a>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">HOW IT WORKS</a></li>
+            <li><a href="#">PRICING</a></li>
+            <li><a href="#">FOR RESELLERS</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+        <a class="nav-cta" id="nav-cta-btn" href="../pages/register.html">Register Your Shop →</a>
+    </nav>
+
+    <!-- ── PAGE CONTENT INJECTED HERE ── -->
+    <main class="account-main" id="layout-slot">
+        <!-- Content loaded by page script -->
+    </main>
+
+    <!-- ── LAYOUT SCRIPT ── -->
+    <script>
+        /**
+         * AccountLayout loader.
+         * Each page using this layout calls:
+         *   AccountLayout.render(htmlString, { title, navCta })
+         */
+        window.AccountLayout = {
+          render(contentHTML, opts = {}) {
+            // Set page title
+            if (opts.title) document.title = `ShopQueue — ${opts.title}`;
+
+            // Swap nav CTA if needed (e.g. login page shows "Register" and vice versa)
+            if (opts.navCta) {
+              const btn = document.getElementById('nav-cta-btn');
+              btn.textContent = opts.navCta.label;
+              btn.href        = opts.navCta.href;
+            }
+
+            // Inject the page body into the slot
+            document.getElementById('layout-slot').innerHTML = contentHTML;
+
+            // Run any inline scripts in the injected content
+            document.getElementById('layout-slot')
+              .querySelectorAll('script')
+              .forEach(s => {
+                const live = document.createElement('script');
+                live.textContent = s.textContent;
+                document.body.appendChild(live);
+              });
+          }
+        };
+    </script>
+</body>
+</html>

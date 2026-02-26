@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\_AccountLayout.cshtml.css" />
+    <None Remove="Views\Shared\_Layout.cshtml.css" />
+    <None Remove="Views\Shared\_ShopOwnerLayout.cshtml.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="ShopQueue.Domain\ShopQueue.Domain.csproj" />
+    <ProjectReference Include="ShopQueue.Logic\ShopQueue.Logic.csproj" />
+  </ItemGroup>
+
+
+
+</Project>
