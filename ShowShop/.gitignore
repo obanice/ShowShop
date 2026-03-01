@@ -2,7 +2,12 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Core/bin/Debug/net8.0
-/Core/obj
-/Logic/bin/Debug/net8.0
+/.vs
+/bin/Debug/net8.0
+/obj
+/Domain/obj
 /Logic/obj
+/ShopQueue.Logic/bin/Debug/net8.0
+/ShopQueue.Domain/obj
+/ShopQueue.Domain/bin/Debug/net8.0
+/ShopQueue.Logic/obj

@@ -1,5 +1,7 @@
-using ShopQueue.Logic.IServices;
-using ShopQueue.Logic.Services;
+
+
+using Logic.IServices;
+using Logic.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopQueue.Domain.Models.ResponseModel
+namespace Core.DB_Context
 {
-    public class ForgetPasswordResponse
+    public class EFContext
     {
     }
 }

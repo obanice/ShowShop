@@ -1,7 +1,7 @@
 using System.Diagnostics;
+using Core.Models.RequestModel;
+using Logic.IServices;
 using Microsoft.AspNetCore.Mvc;
-using ShopQueue.Domain.Models.RequestModel;
-using ShopQueue.Logic.IServices;
 using ShopQueue.Models;
 
 namespace ShopQueue.Controllers

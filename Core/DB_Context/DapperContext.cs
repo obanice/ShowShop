@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DB_Context
+namespace Core.DB_Context
 {
     public interface IDapperContext
     {

@@ -1,13 +1,13 @@
-﻿using ShopQueue.Domain.Models.RequestModel;
-using ShopQueue.Domain.Models.ResponseModel;
-using ShopQueue.Logic.IServices;
+﻿using Core.Models.RequestModel;
+using Core.Models.ResponseModel;
+using Logic.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopQueue.Logic.Services
+namespace Logic.Services
 {
     public class AccountService : IAccountService
     {

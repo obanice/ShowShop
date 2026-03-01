@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopQueue.Domain.Models.RequestModel
+namespace Core.Models.RequestModel
 {
     public class ForgetPasswordRequest
     {

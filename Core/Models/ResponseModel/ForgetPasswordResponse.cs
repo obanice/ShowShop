@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.DB_Context
+namespace Core.Models.ResponseModel
 {
-    public class EFContext
+    public class ForgetPasswordResponse
     {
     }
 }
