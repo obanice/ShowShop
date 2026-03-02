@@ -2,14 +2,13 @@ using System.Diagnostics;
 using Core.Models.RequestModel;
 using Logic.IServices;
 using Microsoft.AspNetCore.Mvc;
-using ShopQueue.Models;
+using ShowShop.Models;
 
-namespace ShopQueue.Controllers
+namespace ShowShop.Controllers
 {
     public class AccountController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         private readonly IAccountService _accountService;
 
         public AccountController(ILogger<HomeController> logger, IAccountService accountService)

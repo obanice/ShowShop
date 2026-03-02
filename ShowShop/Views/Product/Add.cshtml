@@ -1,74 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShopQueue — Add Product</title>
-    <link rel="stylesheet" href="../css/site.css" />
-    <link rel="stylesheet" href="../css/shopowner-layout.css" />
-</head>
-<body class="shopowner-layout">
-
-    <!-- ── TOP APP NAV ── -->
-    <nav class="app-nav">
-        <a class="logo" href="dashboard.html">
-            <div class="logo-icon">SQ</div>
-            <span class="logo-text">ShopQueue</span>
-        </a>
-        <div class="app-nav-right">
-            <button class="nav-notif">🔔<span class="notif-dot"></span></button>
-            <div class="nav-user">
-                <strong>Emeka Okafor</strong>
-                <span>Shop Owner · Free Plan</span>
-            </div>
-            <div class="nav-avatar">EO</div>
-        </div>
-    </nav>
-
-    <!-- ── APP SHELL ── -->
-    <div class="app-layout">
-
-        <!-- SIDEBAR -->
-        <aside class="app-sidebar">
-            <span class="sidebar-section-label">Main</span>
-            <a class="sidebar-item" href="dashboard.html" data-page="dashboard">
-                <span class="sidebar-icon">🏠</span> Dashboard
-            </a>
-            <a class="sidebar-item active" href="#" data-page="products">
-                <span class="sidebar-icon">📦</span> Products
-            </a>
-            <a class="sidebar-item" href="#" data-page="orders">
-                <span class="sidebar-icon">📋</span> Orders
-                <span class="sidebar-badge">3</span>
-            </a>
-            <a class="sidebar-item" href="#" data-page="share-shop">
-                <span class="sidebar-icon">🔗</span> Share My Shop
-            </a>
-
-            <span class="sidebar-section-label">Manage</span>
-            <a class="sidebar-item" href="#" data-page="analytics">
-                <span class="sidebar-icon">📊</span> Analytics
-            </a>
-            <a class="sidebar-item" href="#" data-page="notifications">
-                <span class="sidebar-icon">🔔</span> Notifications
-                <span class="sidebar-badge">5</span>
-            </a>
-            <a class="sidebar-item" href="#" data-page="shop-settings">
-                <span class="sidebar-icon">⚙️</span> Shop Settings
-            </a>
-            <a class="sidebar-item" href="#" data-page="profile">
-                <span class="sidebar-icon">👤</span> Profile
-            </a>
-
-            <div class="sidebar-footer">
-                <div class="plan-chip">⚡ Free Plan</div>
-                <button class="sidebar-upgrade-btn">Upgrade Plan →</button>
-            </div>
-        </aside>
+﻿@{
+    Layout = "~/Views/Shared/ShopAdminLayout.cshtml";
+}
 
         <!-- ── PAGE BODY ── -->
-        <main class="app-main">
-
+   
             <!-- Breadcrumb -->
             <div class="breadcrumb">
                 <a href="dashboard.html">Dashboard</a>
@@ -248,9 +183,6 @@
                 </div>
             </div>
 
-        </main>
-    </div>
-
     <script>
         const subcategories = {
           pipes:    ['PVC', 'HDPE', 'PPR', 'Galvanized', 'Copper'],
@@ -327,6 +259,3 @@
           window.location = 'dashboard.html';
         }
     </script>
-
-</body>
-</html>

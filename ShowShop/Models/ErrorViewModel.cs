@@ -1,4 +1,4 @@
-namespace ShopQueue.Models
+namespace ShowShop.Models
 {
     public class ErrorViewModel
     {

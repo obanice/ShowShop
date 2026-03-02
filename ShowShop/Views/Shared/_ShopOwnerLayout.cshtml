@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ShopQueue</title>
+    <title>ShowShop</title>
     <link rel="stylesheet" href="../css/site.css" />
     <link rel="stylesheet" href="../css/shopowner-layout.css" />
     <!-- Page-specific CSS injected by loader -->
@@ -15,7 +15,7 @@
     <nav class="app-nav">
         <a class="logo" href="../pages/dashboard.html">
             <div class="logo-icon">SQ</div>
-            <span class="logo-text">ShopQueue</span>
+            <span class="logo-text">ShowShop</span>
         </a>
         <div class="app-nav-right">
             <button class="nav-notif" title="Notifications">
@@ -76,6 +76,7 @@
 
         <!-- ── PAGE CONTENT INJECTED HERE ── -->
         <main class="app-main" id="layout-slot">
+            
             <!-- Content loaded by page script -->
         </main>
 
@@ -97,7 +98,7 @@
         window.ShopOwnerLayout = {
           render(contentHTML, opts = {}) {
             // Page title
-            if (opts.title) document.title = `ShopQueue — ${opts.title}`;
+            if (opts.title) document.title = `ShowShop — ${opts.title}`;
 
             // Active sidebar item
             if (opts.activePage) {

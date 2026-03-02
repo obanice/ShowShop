@@ -7,7 +7,7 @@
 /obj
 /Domain/obj
 /Logic/obj
-/ShopQueue.Logic/bin/Debug/net8.0
-/ShopQueue.Domain/obj
-/ShopQueue.Domain/bin/Debug/net8.0
-/ShopQueue.Logic/obj
+/ShowShop.Logic/bin/Debug/net8.0
+/ShowShop.Domain/obj
+/ShowShop.Domain/bin/Debug/net8.0
+/ShowShop.Logic/obj

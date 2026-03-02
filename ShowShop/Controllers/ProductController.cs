@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using ShopQueue.Models;
+using ShowShop.Models;
 
-namespace ShopQueue.Controllers
+namespace ShowShop.Controllers
 {
     public class ProductController : Controller
     {
