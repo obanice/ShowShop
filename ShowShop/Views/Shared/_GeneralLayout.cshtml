@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShowShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/general-layout.css" rel="stylesheet" />
+</head>
+
+<body class="shopowner-layout">
+    <nav class="app-nav">
+        <a class="logo" href="dashboard.html">
+            <div class="logo-icon">SQ</div>
+            <span class="logo-text">ShowShop</span>
+        </a>
+        <div class="app-nav-right">
+            <button class="nav-notif">🔔<span class="notif-dot"></span></button>
+            <div class="nav-user">
+                <strong>Emeka Okafor</strong>
+                <span>Shop Owner · Free Plan</span>
+            </div>
+            <div class="nav-avatar">EO</div>
+        </div>
+    </nav>
+    <main class="app-main">
+        @RenderBody()
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <span class="logo-icon">SQ</span>
+                        ShowShop
+                    </a>
+                    <p>Quality pet products, delivered fast.</p>
+                </div>
+
+                <div class="footer-contact">
+                    <a href="https://wa.me/2349122188759" class="whatsapp-link">
+                        <span class="icon">💬</span> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2026 ShowShop. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
