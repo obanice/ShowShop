@@ -202,11 +202,12 @@ body.shopowner-layout {
 
 /* ── PAGE HEADER ── */
 .page-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 28px;
-  gap: 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    gap: 16px;
+    margin-top: 55px;
 }
 
 .page-header-text h1 {

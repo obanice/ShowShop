@@ -95,62 +95,7 @@
          *   badges:      { orders, notif } // numeric badge counts (0 = hidden)
          * }
          */
-        window.ShopOwnerLayout = {
-          render(contentHTML, opts = {}) {
-            // Page title
-            if (opts.title) document.title = `ShowShop — ${opts.title}`;
-
-            // Active sidebar item
-            if (opts.activePage) {
-              document.querySelectorAll('.sidebar-item').forEach(el => {
-                el.classList.toggle('active', el.dataset.page === opts.activePage);
-              });
-            }
-
-            // User info
-            if (opts.user) {
-              const initials = opts.user.name
-                .split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
-              document.getElementById('nav-user-name').textContent = opts.user.name;
-              document.getElementById('nav-user-role').textContent =
-                `Shop Owner · ${opts.user.plan || 'Free Plan'}`;
-              document.getElementById('nav-avatar').textContent   = initials;
-              document.getElementById('plan-chip').textContent    =
-                `⚡ ${opts.user.plan || 'Free Plan'}`;
-            }
-
-            // Notification / order badges
-            if (opts.badges) {
-              const ob = document.getElementById('orders-badge');
-              const nb = document.getElementById('notif-badge');
-              const nd = document.getElementById('notif-dot');
-
-              if (opts.badges.orders > 0) {
-                ob.textContent = opts.badges.orders;
-                ob.style.display = '';
-              }
-              if (opts.badges.notif > 0) {
-                nb.textContent   = opts.badges.notif;
-                nb.style.display = '';
-                nd.style.display = '';
-              } else {
-                nd.style.display = 'none';
-              }
-            }
-
-            // Inject page HTML into the slot
-            document.getElementById('layout-slot').innerHTML = contentHTML;
-
-            // Re-run any inline scripts in the injected content
-            document.getElementById('layout-slot')
-              .querySelectorAll('script')
-              .forEach(s => {
-                const live = document.createElement('script');
-                live.textContent = s.textContent;
-                document.body.appendChild(live);
-              });
-          }
-        };
+       
     </script>
 </body>
 </html>
